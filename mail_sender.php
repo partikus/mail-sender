@@ -409,7 +409,6 @@ session_start();
         </td>
     </tr>
 </table>
-<p align="center" class="styl1">MAIL SENDER created by kefir&amp;turbo programmer team 2008<br/>
-    lojant (post) gmail (dot) com</p>
+<p align="center" class="styl1">MAIL SENDER created 2008</p>
 </body>
 </html>
