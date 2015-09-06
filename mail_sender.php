@@ -328,7 +328,7 @@ session_start();
 
             if (isset($_POST['pass'])) {
                 switch (sha1($_POST['pass'])) {
-                    case '27868a729138c69ce465cf38c1e5517717a532cc': //admin
+                    case 'd033e22ae348aeb5660fc2140aec35850c4da997': //admin
                         $_SESSION['user'] = 'admin';
                         break;
                     case 'fb360f9c09ac8c5edb2f18be5de4e80ea4c430d0': //zalogowany

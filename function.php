@@ -3,7 +3,7 @@ function polacz_z_baza()
 {
     // ustawenia bazy danych
     $dbhost = 'localhost';
-    $dbname = 'MAIL_SENDER';
+    $dbname = 'mail-sender';
     $dbuser = 'root';
     $dbpass = '';
 

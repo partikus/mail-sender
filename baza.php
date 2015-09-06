@@ -2,7 +2,7 @@
 
 // ustawenia bazy danych
 $dbhost = 'localhost';
-$dbname = 'MAIL_SENDER';
+$dbname = 'mail-sender';
 $dbuser = 'root';
 $dbpass = '';
 
@@ -12,7 +12,7 @@ if (!$db) {
     //die('Przepraszamy w tej chwili serwer jest niedostępny, prosimy o zgłoszenie później.');
 }
 
-$sql = 'CREATE DATABASE '.$dbname.' DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ';
+$sql = 'CREATE DATABASE `'.$dbname.'` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ';
 mysql_query($sql) or die(mysql_error());
 
 $dbselect = mysql_select_db($dbname, $db);
