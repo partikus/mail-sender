@@ -1,10 +1,6 @@
 {
     "name": "php-refactor/mail-sender",
     "description": "Mail Sender",
-    "require-dev": {
-        "phpunit/phpunit": "@stable",
-        "phpunit/phpunit-selenium": "@stable"
-    },
     "license": "MIT",
     "authors": [
         {
@@ -12,15 +8,19 @@
             "email": "john@example.com"
         }
     ],
-    "minimum-stability": "stable",
     "require": {
     },
-    "config": {
-        "bin-dir": "bin/"
-    }, 
+    "require-dev": {
+        "phpunit/phpunit": "@stable",
+        "phpunit/phpunit-selenium": "@stable"
+    },
     "autoload": {
         "psr-4": { 
             "": [ "src/"]
         }
-    }
+    },
+    "minimum-stability": "stable",
+    "config": {
+        "bin-dir": "bin/"
+    } 
 }
