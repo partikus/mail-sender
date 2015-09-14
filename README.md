@@ -19,7 +19,8 @@ vagrant ssh
 cd /var/www/mail-sender
 mysql -u root mail-sender < mail-sender.sql
 ```
-And at the end you have to add the following line into ``/etc/hosts`` file:
+And at the end you have to add the following line into ``/etc/hosts`` file 
+(for Windows add line into ``C:\Windows\System32\Drivers\etc\hosts``)
 ```
 10.0.0.200  mail-sender.dev
 ```
