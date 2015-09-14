@@ -1,6 +1,6 @@
 # Mail-Sender
 
-This training app has created in order to find out new approach in builid
+This training app has created in order to find out new approach in build
 
 
 ## Development - Getting started
@@ -19,7 +19,7 @@ vagrant ssh
 cd /var/www/mail-sender
 mysql -u root mail-sender < mail-sender.sql
 ```
-And at the end you have to add the following line into ``etc/hosts`` file:
+And at the end you have to add the following line into ``/etc/hosts`` file:
 ```
 10.0.0.200  mail-sender.dev
 ```
