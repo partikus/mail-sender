@@ -20,7 +20,7 @@ class AddMailTest extends PHPUnit_Extensions_Selenium2TestCase
     }
 
     /**
-     * @dataProvider emailProvider
+     * @dataProvider emailScenarios
      */
     public function testAddMail($mail, $expectedMessage)
     {
@@ -36,7 +36,7 @@ class AddMailTest extends PHPUnit_Extensions_Selenium2TestCase
         $this->assertContains($expectedMessage, $this->source());
     }
 
-    public function emailProvider()
+    public function emailScenarios()
     {
         return array(
             array('', 'Niepoprawne mail!'),
