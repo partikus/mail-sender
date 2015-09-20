@@ -9,6 +9,18 @@ class AddMailTest extends PHPUnit_Extensions_Selenium2TestCase
         $this->setBrowserUrl('http://mail-sender.dev');
     }
 
+    protected function prepareDatabase()
+    {
+        $db = new PDO(
+            "mysql:host=localhost;dbname=mail-sender",
+            "root", ""
+        );
+
+        $stmt = $db->prepare("DELETE FROM mail_sender WHERE mail = 'somenotexisting@email.com'");
+
+        return $stmt->execute();
+    }
+
     public function setUpPage()
     {
         $this->url('/mail_sender.php?page=add_mail');
@@ -22,8 +34,12 @@ class AddMailTest extends PHPUnit_Extensions_Selenium2TestCase
     /**
      * @dataProvider emailScenarios
      */
-    public function testAddMail($mail, $expectedMessage)
+    public function testAddMail($mail, $expectedMessage, $clearDatabase)
     {
+        if ($clearDatabase) {
+            $this->prepareDatabase();
+        }
+
         $this->url('/mail_sender.php?page=add_mail');
 
         $emailField = $this->byName('n_mail');
@@ -39,11 +55,11 @@ class AddMailTest extends PHPUnit_Extensions_Selenium2TestCase
     public function emailScenarios()
     {
         return array(
-            array('', 'Niepoprawne mail!'),
-            array('some@', 'Niepoprawne mail!'),
-            array('some@email', 'Niepoprawne mail!'),
-            array('some@email.com', 'Maila dodano do bazy!'),
-            array('some@email.com', 'Zapytanie ofertowe wysłano ponownie!'),
+            array('', 'Niepoprawne mail!', true),
+            array('some@', 'Niepoprawne mail!', false),
+            array('some@email', 'Niepoprawne mail!', false),
+            array('somenotexisting@email.com', 'Maila dodano do bazy!', false),
+            array('somenotexisting@email.com', 'Zapytanie ofertowe wysłano ponownie!', false),
         );
     }
 }
