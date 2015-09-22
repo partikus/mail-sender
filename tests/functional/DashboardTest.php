@@ -1,14 +1,7 @@
 <?php
 
-class DashboardTest extends PHPUnit_Extensions_Selenium2TestCase
+class DashboardTest extends FunctionalTest
 {
-    protected function setUp()
-    {
-        $this->setHost('127.0.0.1');
-        $this->setBrowser('firefox');
-        $this->setBrowserUrl('http://mail-sender.dev');
-    }
-
     /**
      * @dataProvider siteProvider
      */
@@ -25,5 +18,4 @@ class DashboardTest extends PHPUnit_Extensions_Selenium2TestCase
             array('/mail_sender.php?page=start', ':: ABC Mail Sender :: start'),
         );
     }
-
 }

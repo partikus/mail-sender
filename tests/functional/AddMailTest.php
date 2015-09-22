@@ -1,36 +1,7 @@
 <?php
 
-class AddMailTest extends PHPUnit_Extensions_Selenium2TestCase
+class AddMailTest extends FunctionalTest
 {
-    protected function setUp()
-    {
-        $this->setHost('127.0.0.1');
-        $this->setBrowser('firefox');
-        $this->setBrowserUrl('http://mail-sender.dev');
-    }
-
-    protected function prepareDatabase()
-    {
-        $db = new PDO(
-            "mysql:host=localhost;dbname=mail-sender",
-            "root", ""
-        );
-
-        $stmt = $db->prepare("DELETE FROM mail_sender WHERE mail = 'somenotexisting@email.com'");
-
-        return $stmt->execute();
-    }
-
-    public function setUpPage()
-    {
-        $this->url('/mail_sender.php?page=add_mail');
-
-        $passwordField = $this->byId('pass');
-        $passwordField->value('admin');
-
-        $this->byId('OK')->click();
-    }
-
     /**
      * @dataProvider emailScenarios
      */
