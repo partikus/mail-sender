@@ -28,9 +28,9 @@ install:
     - wget http://selenium-release.storage.googleapis.com/2.46/selenium-server-standalone-2.46.0.jar
 
 before_script:
-    - mysql -e "create database IF NOT EXISTS `mail-sender`;" -uroot
+    - mysql -e 'create database IF NOT EXISTS `mail-sender`;' -uroot
     - mysql -uroot 'mail-sender' < mail-sender.sql
-    - nohup php -S "mail-sender.dev:80" -t web > server.log 2>&1 &
+    - nohup php -S "localhost:8080" -t web > server.log 2>&1 &
     - sh -e /etc/init.d/xvfb start
     - export DISPLAY=:99.0
     - java -jar selenium-server-standalone-2.46.0.jar > /dev/null 2>&1 &

@@ -8,18 +8,21 @@ abstract class FunctionalTest extends PHPUnit_Extensions_Selenium2TestCase
         $this->setHost($config['host']);
         $this->setBrowser($config['browser']);
         $this->setBrowserUrl($config['browserUrl']);
+        $this->prepareDatabase();
     }
 
     protected function prepareDatabase()
     {
+        $config = Config::getByEnv(getenv('MAIL_SENDER_ENV'));
         $db = new PDO(
-            "mysql:host=localhost;dbname=mail-sender",
-            "root", ""
+            sprintf("mysql:host=%s;dbname=%s", $config['db_host'], $config['db_name']),
+            $config['db_user'], $config['db_pass']
         );
 
-        $stmt = $db->prepare("DELETE FROM mail_sender WHERE mail = 'somenotexisting@email.com'");
-
-        return $stmt->execute();
+        $db->beginTransaction();
+        $db->prepare("DELETE FROM mail_sender")->execute();
+        $db->prepare("DELETE FROM mail_content")->execute();
+        $db->commit();
     }
 
     public function setUpPage()
